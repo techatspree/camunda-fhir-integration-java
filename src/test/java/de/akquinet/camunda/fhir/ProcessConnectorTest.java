@@ -8,7 +8,6 @@ import io.camunda.zeebe.process.test.assertions.BpmnAssert;
 import io.camunda.zeebe.process.test.assertions.DeploymentAssert;
 import io.camunda.zeebe.process.test.assertions.ProcessInstanceAssert;
 import io.camunda.zeebe.process.test.extension.ZeebeProcessTest;
-import io.camunda.zeebe.process.test.filters.RecordStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +18,6 @@ import java.util.concurrent.TimeoutException;
 public class ProcessConnectorTest {
     private ZeebeTestEngine engine;
     private ZeebeClient client;
-    private RecordStream recordStream;
 
     @Test
     public void testDeploymentAndStartProcessInstance() {
@@ -37,6 +35,7 @@ public class ProcessConnectorTest {
                 .send()
                 .join();
 
+        completeServiceTasks("set-fhir-server-url", 1);
         completeServiceTasks("io.camunda:http-json:1", 1);
         completeServiceTasks("send-patientdata_to_sap", 1);
 

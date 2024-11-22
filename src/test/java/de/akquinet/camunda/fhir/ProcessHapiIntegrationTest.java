@@ -9,9 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static io.camunda.process.test.api.CamundaAssert.assertThat;
 
-@SpringBootTest
+@SpringBootTest(properties = {"hapi.fhir.serverbase=http://localhost:8081/"})
 @CamundaSpringProcessTest
-public class ProcessHapiIntegrationTest {
+public class ProcessHapiIntegrationTest extends WiremockTestBase {
     @Autowired
     private ZeebeClient client;
 

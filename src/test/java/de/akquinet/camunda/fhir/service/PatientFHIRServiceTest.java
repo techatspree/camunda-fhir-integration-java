@@ -1,18 +1,16 @@
 package de.akquinet.camunda.fhir.service;
 
-import ca.uhn.fhir.context.FhirContext;
+import de.akquinet.camunda.fhir.WiremockTestBase;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
-public class PatientFHIRServiceTest {
+@SpringBootTest(properties = {"hapi.fhir.serverbase=http://localhost:8081/"})
+public class PatientFHIRServiceTest extends WiremockTestBase {
 
-    private PatientFHIRService underTest = new PatientFHIRService(FhirContext.forR4(), "https://hapi.fhir.org/baseR4");
-
-    @BeforeEach
-    public void setUp() {
-        underTest = new PatientFHIRService(FhirContext.forR4(), "https://hapi.fhir.org/baseR4");
-    }
+    @Autowired
+    private PatientFHIRService underTest;
 
     @Test
     public void testGetPatient() {

@@ -8,7 +8,6 @@ import io.camunda.zeebe.process.test.assertions.BpmnAssert;
 import io.camunda.zeebe.process.test.assertions.DeploymentAssert;
 import io.camunda.zeebe.process.test.assertions.ProcessInstanceAssert;
 import io.camunda.zeebe.process.test.extension.ZeebeProcessTest;
-import io.camunda.zeebe.process.test.filters.RecordStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +18,6 @@ import java.util.concurrent.TimeoutException;
 public class ProcessHapiTest {
     private ZeebeTestEngine engine;
     private ZeebeClient client;
-    private RecordStream recordStream;
 
     @Test
     public void testDeploymentAndStartProcessInstance() {

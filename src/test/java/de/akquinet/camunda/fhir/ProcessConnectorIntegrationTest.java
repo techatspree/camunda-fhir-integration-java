@@ -2,23 +2,18 @@ package de.akquinet.camunda.fhir;
 
 import io.camunda.zeebe.client.ZeebeClient;
 import io.camunda.zeebe.client.api.response.ProcessInstanceEvent;
-import org.assertj.core.api.Assertions;
 import org.awaitility.Awaitility;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.StreamingHttpOutputMessage;
 import org.springframework.web.client.RestClient;
 
 import java.time.Duration;
 
-@SpringBootTest
-public class ProcessConnectorIntegrationTest {
+@SpringBootTest(properties = {"hapi.fhir.serverbase=http://localhost:8081/"})
+public class ProcessConnectorIntegrationTest extends WiremockTestBase {
     @Autowired
     private ZeebeClient client;
 
